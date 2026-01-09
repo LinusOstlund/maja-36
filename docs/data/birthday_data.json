@@ -76,7 +76,7 @@
       "step": 2,
       "type": "kpi-cards",
       "content": {
-        "intro": "Linus sparbudget 2025 ca 18000:-, vilket bleknade jämfört mot",
+        "intro": "Linus sparbudget 2025 bleknade i jämförelse med",
         "highlight": "presentbudgeten",
         "kpis": [
           {
@@ -102,7 +102,7 @@
       "step": 3,
       "type": "line-chart",
       "content": {
-        "intro": "Låt den här trenden hålla i sig, så kommer du få presenter för miljontals kronor 2035",
+        "intro": "Låt den här trenden hålla i sig, så kommer du snart få presenter för miljontals kronor",
         "chart": {
           "title": "Presentbudget per år",
           "x_label": "År",
@@ -195,7 +195,7 @@
       "step": 4,
       "type": "image-grid",
       "content": {
-        "text": "Okej, nu får du några hintar",
+        "text": "Okej, nu får du några hintar, sen ska du gissa vad presenten är för något",
         "layout": "grid-3",
         "images": [
           {
@@ -283,7 +283,7 @@
       "step": 8,
       "type": "image-grid",
       "content": {
-        "text": "men också",
+        "text": "... men också...",
         "layout": "grid-2",
         "images": [
           {
@@ -302,7 +302,7 @@
       "step": 9,
       "type": "image-single",
       "content": {
-        "text": "SOVMORGON",
+        "text": "SOVMORGON 😍",
         "image": {
           "url": "https://i.pinimg.com/564x/c5/69/07/c56907b29b0584e298274cc0fd8f85fa.jpg",
           "alt": "God bless this mess"
@@ -314,7 +314,7 @@
       "step": 10,
       "type": "image-single",
       "content": {
-        "text": "It's gonna be sumthin juicy baby",
+        "text": "🎵It's gonna be sumthin juicy baby🎶",
         "image": {
           "url": "https://m.media-amazon.com/images/I/41Q7J0D7EDL._UF894,1000_QL80_.jpg",
           "alt": "Juicy Juice"

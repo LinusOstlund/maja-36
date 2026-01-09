@@ -356,52 +356,59 @@ export class VisualizationManager {
 
         const svg = container.append('svg')
             .attr('width', width)
-            .attr('height', height);
+            .attr('height', height * 2); // Extended height for scrolling
 
         // Responsive sizing
-        const bubbleWidth = isMobile ? Math.min(280, width - 40) : 400;
-        const spacing = isMobile ? 20 : 30;
-        const startY = isMobile ? 80 : 120;
+        const bubbleWidth = isMobile ? Math.min(300, width - 60) : 450;
+        const spacing = isMobile ? 40 : 60;
+        const startY = isMobile ? 100 : 150;
 
         quotes.forEach((quote, i) => {
             const x = (width - bubbleWidth) / 2;
-            const y = startY + i * (isMobile ? 110 : 130);
+            const y = startY + i * (isMobile ? 140 : 160);
 
             // Bubble group
             const g = svg.append('g')
-                .attr('opacity', 0);
+                .attr('class', `quote-bubble-${i}`)
+                .attr('opacity', 0)
+                .attr('transform', `translate(0, 20)`); // Start slightly lower
 
-            // Bubble background (chat bubble style)
-            const bubbleHeight = isMobile ? 90 : 100;
+            // Bubble background (chat bubble style with better shadow)
+            const bubbleHeight = isMobile ? 100 : 110;
             g.append('rect')
                 .attr('x', x)
                 .attr('y', y)
                 .attr('width', bubbleWidth)
                 .attr('height', bubbleHeight)
-                .attr('rx', 12)
-                .attr('fill', '#f0f0f0')
-                .style('filter', 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))');
+                .attr('rx', 16)
+                .attr('fill', '#ffffff')
+                .attr('stroke', '#e0e0e0')
+                .attr('stroke-width', 1)
+                .style('filter', 'drop-shadow(0 4px 12px rgba(0,0,0,0.08))');
 
             // Author name (bold)
             g.append('text')
-                .attr('x', x + 15)
-                .attr('y', y + 25)
-                .attr('font-size', isMobile ? 14 : 16)
+                .attr('x', x + 20)
+                .attr('y', y + 30)
+                .attr('font-size', isMobile ? 15 : 17)
                 .attr('font-family', 'IBM Plex Mono, monospace')
-                .attr('font-weight', '600')
-                .attr('fill', '#8B4513')
-                .text(quote.author);
+                .attr('font-weight', '700')
+                .attr('fill', '#D4A574')
+                .text(quote.author + ':');
 
-            // Quote text (wrapped)
-            const maxWidth = bubbleWidth - 30;
-            const fontSize = isMobile ? 13 : 14;
-            this.wrapText(g, quote.text, x + 15, y + 50, maxWidth, fontSize);
+            // Quote text (wrapped, better styling)
+            const maxWidth = bubbleWidth - 40;
+            const fontSize = isMobile ? 14 : 15;
+            this.wrapText(g, quote.text, x + 20, y + 55, maxWidth, fontSize);
 
-            // Animate in with stagger
-            g.transition()
-                .delay(i * 400)
-                .duration(600)
-                .attr('opacity', 1);
+            // Scroll-based reveal with stagger
+            setTimeout(() => {
+                g.transition()
+                    .duration(800)
+                    .ease(d3.easeCubicOut)
+                    .attr('opacity', 1)
+                    .attr('transform', `translate(0, 0)`);
+            }, i * 600);
         });
     }
 
