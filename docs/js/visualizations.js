@@ -22,6 +22,10 @@ export class VisualizationManager {
         this.activeAnimations = []; // Track active timeouts/intervals
     }
 
+    isMobile() {
+        return window.innerWidth < 768;
+    }
+
     clearActiveAnimations() {
         // Cancel all active timeouts and intervals
         this.activeAnimations.forEach(id => {
@@ -153,16 +157,23 @@ export class VisualizationManager {
         const width = window.innerWidth;
         const height = window.innerHeight;
         const { images } = slide.content;
+        const isMobile = this.isMobile();
+
+        // Responsive sizing
+        const imgSize = isMobile ? 120 : 200;
+        const margin = isMobile ? 50 : 150;
 
         const svg = container.append('svg')
             .attr('width', width)
             .attr('height', height);
 
         images.forEach((img, i) => {
-            const x = 150 + Math.random() * (width - 500);
-            const y = 100 + Math.random() * (height - 350);
-            const rotation = -25 + Math.random() * 50;
-            const scale = 0.8 + Math.random() * 0.4;
+            const maxX = width - imgSize - margin;
+            const maxY = height - imgSize - 100;
+            const x = margin + Math.random() * maxX;
+            const y = 100 + Math.random() * maxY;
+            const rotation = isMobile ? -15 + Math.random() * 30 : -25 + Math.random() * 50;
+            const scale = isMobile ? 1 : 0.8 + Math.random() * 0.4;
 
             const g = svg.append('g')
                 .attr('transform', `translate(${x}, ${y}) rotate(${rotation}) scale(${scale})`)
@@ -170,8 +181,8 @@ export class VisualizationManager {
 
             // White background card
             g.append('rect')
-                .attr('width', 200)
-                .attr('height', 200)
+                .attr('width', imgSize)
+                .attr('height', imgSize)
                 .attr('fill', 'white')
                 .attr('rx', 8)
                 .style('filter', 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))');
@@ -179,8 +190,8 @@ export class VisualizationManager {
             // Image
             g.append('image')
                 .attr('href', img.url)
-                .attr('width', 200)
-                .attr('height', 200)
+                .attr('width', imgSize)
+                .attr('height', imgSize)
                 .attr('preserveAspectRatio', 'xMidYMid slice')
                 .attr('clip-path', 'inset(0 round 8px)');
 
@@ -196,14 +207,18 @@ export class VisualizationManager {
         const width = window.innerWidth;
         const height = window.innerHeight;
         const { images, layout } = slide.content;
-        const cols = layout === 'grid-3' ? 3 : 2;
+        const isMobile = this.isMobile();
+
+        // Responsive columns: Mobile = 1 column, Desktop = 2 or 3
+        const cols = isMobile ? 1 : (layout === 'grid-3' ? 3 : 2);
 
         const svg = container.append('svg')
             .attr('width', width)
             .attr('height', height);
 
-        const imgWidth = 300;
-        const spacing = 50;
+        // Responsive sizing
+        const imgWidth = isMobile ? Math.min(250, width - 40) : 300;
+        const spacing = isMobile ? 30 : 50;
         const totalWidth = cols * imgWidth + (cols - 1) * spacing;
         const startX = (width - totalWidth) / 2;
 
@@ -211,7 +226,7 @@ export class VisualizationManager {
             const col = i % cols;
             const row = Math.floor(i / cols);
             const x = startX + col * (imgWidth + spacing);
-            const y = 150 + row * (imgWidth + spacing);
+            const y = isMobile ? 100 + row * (imgWidth + spacing) : 150 + row * (imgWidth + spacing);
 
             const g = svg.append('g')
                 .attr('opacity', 0);
@@ -248,12 +263,14 @@ export class VisualizationManager {
         const width = window.innerWidth;
         const height = window.innerHeight;
         const { image } = slide.content;
+        const isMobile = this.isMobile();
 
         const svg = container.append('svg')
             .attr('width', width)
             .attr('height', height);
 
-        const imgSize = 400;
+        // Responsive sizing
+        const imgSize = isMobile ? Math.min(280, width - 40) : 400;
         const x = (width - imgSize) / 2;
         const y = (height - imgSize) / 2;
 
@@ -331,27 +348,30 @@ export class VisualizationManager {
         const width = window.innerWidth;
         const height = window.innerHeight;
         const { kpis } = slide.content;
+        const isMobile = this.isMobile();
 
         const svg = container.append('svg')
             .attr('width', width)
             .attr('height', height);
 
-        // Position KPI cards
-        const cardWidth = 350;
-        const spacing = 50;
+        // Responsive card sizing and positioning
+        const cardWidth = isMobile ? Math.min(300, width - 40) : 350;
+        const cardHeight = 200;
+        const spacing = isMobile ? 30 : 50;
         const totalWidth = cardWidth * 2 + spacing;
         const startX = (width - totalWidth) / 2;
 
         kpis.forEach((kpi, i) => {
-            const x = startX + i * (cardWidth + spacing);
-            const y = height / 2;
+            // Mobile: Stack vertically, Desktop: Side-by-side
+            const x = isMobile ? (width - cardWidth) / 2 : startX + i * (cardWidth + spacing);
+            const y = isMobile ? 150 + i * (cardHeight + spacing) : height / 2;
 
             // Card background
             svg.append('rect')
                 .attr('x', x)
                 .attr('y', y - 100)
                 .attr('width', cardWidth)
-                .attr('height', 200)
+                .attr('height', cardHeight)
                 .attr('rx', 10)
                 .attr('fill', 'white')
                 .attr('stroke', kpi.color)
