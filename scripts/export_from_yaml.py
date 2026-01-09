@@ -18,7 +18,7 @@ def export_yaml_to_json():
     project_root = script_dir.parent
 
     yaml_file = project_root / 'data' / 'raw' / 'birthday_data.yaml'
-    json_file = project_root / 'web' / 'data' / 'birthday_data.json'
+    json_file = project_root / 'docs' / 'data' / 'birthday_data.json'
 
     # Ensure output directory exists
     json_file.parent.mkdir(parents=True, exist_ok=True)
