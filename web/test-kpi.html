@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test KPI</title>
+</head>
+<body>
+    <div id="test"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        const kpi = { label: "Test", value: 18000, unit: "kr", color: "#D4A574" };
+        
+        const svg = d3.select('#test')
+            .append('svg')
+            .attr('width', 500)
+            .attr('height', 300);
+        
+        const valueText = svg.append('text')
+            .attr('x', 250)
+            .attr('y', 150)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', 48)
+            .attr('font-family', 'monospace')
+            .attr('fill', kpi.color)
+            .text('0 ' + kpi.unit);
+        
+        console.log('Starting tween...');
+        
+        valueText
+            .transition()
+            .duration(2000)
+            .tween('text', function() {
+                const interpolator = d3.interpolateNumber(0, kpi.value);
+                const unit = kpi.unit;
+                return function(t) {
+                    const val = Math.round(interpolator(t));
+                    console.log('t:', t, 'val:', val);
+                    this.textContent = val.toLocaleString('sv-SE') + ' ' + unit;
+                };
+            });
+    </script>
+</body>
+</html>

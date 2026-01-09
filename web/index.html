@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grattis Maja! 🎉</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/scrollytelling.css">
+
+    <!-- Google Fonts: Crimson Text (serif) + IBM Plex Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Scrollytelling Container -->
+    <div class="scrollytelling-container">
+
+        <!-- FIXED VISUALIZATION PANEL (Background) -->
+        <div class="visualization-panel">
+            <div id="viz-step-0" class="viz-step active" data-viz-step="0"></div>
+            <div id="viz-step-1" class="viz-step" data-viz-step="1"></div>
+            <div id="viz-step-2" class="viz-step" data-viz-step="2"></div>
+            <div id="viz-step-3" class="viz-step" data-viz-step="3"></div>
+            <div id="viz-step-4" class="viz-step" data-viz-step="4"></div>
+            <div id="viz-step-5" class="viz-step" data-viz-step="5"></div>
+        </div>
+
+        <!-- SCROLLING NARRATIVE PANEL (Overlay) -->
+        <div class="narrative-panel">
+
+            <!-- Step 0: Hero -->
+            <section class="narrative-step hero-step" data-step="0">
+                <div class="narrative-content hero">
+                    <!-- Content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Step 1: Wishlist -->
+            <section class="narrative-step" data-step="1">
+                <div class="narrative-content">
+                    <!-- Content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Step 2: Ideas Cloud -->
+            <section class="narrative-step" data-step="2">
+                <div class="narrative-content">
+                    <!-- Content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Step 3: Transition -->
+            <section class="narrative-step" data-step="3">
+                <div class="narrative-content centered">
+                    <!-- Content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Step 4: Budget KPIs -->
+            <section class="narrative-step" data-step="4">
+                <div class="narrative-content">
+                    <!-- Content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Step 5: Future Projection -->
+            <section class="narrative-step" data-step="5">
+                <div class="narrative-content">
+                    <!-- Content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Spacer for final scroll -->
+            <div class="scroll-spacer"></div>
+        </div>
+    </div>
+
+    <!-- D3.js v7 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- App JS (ES6 Modules) -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

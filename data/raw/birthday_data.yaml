@@ -1,0 +1,182 @@
+# Maja's 36th Birthday Present Data
+# Source of truth for scrollytelling content
+
+metadata:
+  recipient: "Maja Pelle-Svensson"
+  age: 36
+  year: 2025
+  language: "sv"
+
+slides:
+  # Slide 0: Hero / Header
+  - id: "header"
+    step: 0
+    type: "hero"
+    content:
+      title: "Maja Pelle-Svenssons"
+      subtitle: "36 år gammal"
+      emojis: "🎉🎂🎁✨"
+
+  # Slide 1: Wishlist
+  - id: "wishlist"
+    step: 1
+    type: "list"
+    content:
+      intro: "Vad ger man den som har allt? Justja, du har kidnappat inköpslistan med nästlade födelsedagslistor"
+      items:
+        - text: "En krok i taket centrerat över matbordet"
+          note: "Till solsystemet :)"
+          checked: false
+          strikethrough: false
+        - text: "Montering av väggfasta skåp i hallen"
+          note: "Tex 4 Ivar-skåp"
+          checked: false
+          strikethrough: false
+        - text: "En bra elektrisk nagelfil, från typ nailster eller ngt"
+          checked: false
+          strikethrough: false
+        - text: "Nya AirPods (eller annat billigare märke, inte för stora)"
+          checked: false
+          strikethrough: false
+        - text: "Julia frändförs bok - det gör bara ont i början"
+          checked: false
+          strikethrough: false
+        - text: "Bok tone shunnesson - tripprapporter"
+          checked: false
+          strikethrough: false
+        - text: "Morgonrock från a world of craft"
+          checked: false
+          strikethrough: false
+        - text: "Trådlösa on ear lurar till träningen"
+          note: "Inte över ear, gillar inte"
+          checked: false
+          strikethrough: false
+        - text: "Sumting juicy"
+          checked: false
+          strikethrough: true
+
+  # Slide 2: Ideas Cloud
+  - id: "ideas"
+    step: 2
+    type: "icon-cloud"
+    content:
+      text: "Well, du har en pojkvän med stor fantasi och påstådd (men bestridd) autism. Idéer finnes."
+      icon_count: 100
+      icons:
+        - "💡"  # Ideas
+        - "🧠"  # Brain/thinking
+        - "❤️"  # Love
+        - "💕"  # Hearts
+        - "🎨"  # Creativity
+        - "🎭"  # Drama/fun
+        - "🌟"  # Special
+        - "✨"  # Sparkles
+        - "🎪"  # Circus/fun
+        - "🎸"  # Music
+        - "🎵"  # Musical note
+        - "🎶"  # Musical notes
+        - "📚"  # Books
+        - "📖"  # Open book
+        - "🎬"  # Movies
+        - "📺"  # TV
+        - "🍕"  # Food
+        - "🌮"  # Tacos
+        - "🍰"  # Cake
+        - "🍪"  # Cookie
+        - "☕"  # Coffee
+        - "🍷"  # Wine
+        - "🍾"  # Champagne
+        - "🌺"  # Flowers
+        - "🌸"  # Cherry blossom
+        - "🌹"  # Rose
+        - "🏖️"  # Beach/vacation
+        - "✈️"  # Travel
+        - "🏔️"  # Mountains
+        - "🚴"  # Cycling
+        - "🧘"  # Yoga
+        - "💅"  # Nails
+        - "👗"  # Dress
+        - "👠"  # Heels
+        - "💄"  # Lipstick
+        - "🎮"  # Games
+        - "🏡"  # Home
+        - "🛋️"  # Couch
+        - "🕯️"  # Candle
+
+  # Slide 3: Transition
+  - id: "transition"
+    step: 3
+    type: "text"
+    content:
+      text: "Du kan vara lugn, en present är inhandlad. Men först lite data"
+
+  # Slide 4: Budget KPIs
+  - id: "budget-kpis"
+    step: 4
+    type: "kpi-cards"
+    content:
+      intro: "Linus sparbudget 2025 ca 18000:-, vilket bleknade jämfört mot"
+      highlight: "presentbudgeten"
+      kpis:
+        - label: "Sparbudget 2025"
+          value: 18000
+          unit: "kr"
+          color: "#6B7280"
+          emphasis: false
+        - label: "Presentbudget 2025"
+          value: 20000
+          unit: "kr"
+          color: "#D4A574"
+          emphasis: true
+          prefix: ">"
+
+  # Slide 5: Future Projection Chart
+  - id: "future-projection"
+    step: 5
+    type: "line-chart"
+    content:
+      intro: "Låt den här trenden hålla i sig, så kommer du få presenter för miljontals kronor 2035"
+      chart:
+        title: "Presentbudget per år"
+        x_label: "År"
+        y_label: "Kronor"
+        historical:
+          - year: 2016
+            value: 250
+          - year: 2017
+            value: 450
+          - year: 2018
+            value: 800
+          - year: 2019
+            value: 1200
+          - year: 2020
+            value: 900
+          - year: 2021
+            value: 1500
+          - year: 2022
+            value: 1800
+          - year: 2023
+            value: 2200
+          - year: 2024
+            value: 3500
+          - year: 2025
+            value: 20000
+        projection:
+          - year: 2025
+            value: 20000
+          - year: 2026
+            value: 15000
+          - year: 2027
+            value: 25000
+          - year: 2028
+            value: 30000
+          - year: 2029
+            value: 40000
+          - year: 2030
+            value: 55000
+          - year: 2031
+            value: 70000
+          - year: 2033
+            value: 1500000
+          - year: 2035
+            value: 1850000

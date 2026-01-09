@@ -1,0 +1,58 @@
+/* Design System Variables - Birthday-themed Tufte-inspired palette */
+
+:root {
+    /* Base Colors (Tufte-inspired) */
+    --color-bg: #FFF9F5;              /* Warmer off-white for birthday */
+    --color-surface: #FFFFFF;          /* Pure white cards */
+    --color-text: #1a1a1a;            /* Near black */
+    --color-text-muted: #6B7280;      /* Gray */
+
+    /* Birthday Accent Colors */
+    --color-accent: #D4A574;          /* Warm gold (birthday theme) */
+    --color-accent-dark: #8B4513;     /* Saddle brown (from CLAUDE.md) */
+    --color-love: #E8B4B8;            /* Soft pink (romantic touch) */
+    --color-data: #5B8C85;            /* Teal (data viz) */
+    --color-projection: #C84B4B;      /* Red (future projection) */
+
+    --color-border: #E5E5E5;          /* Light gray */
+    --color-shadow: rgba(0, 0, 0, 0.08);
+
+    /* Typography */
+    --font-serif: 'Crimson Text', Georgia, serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+    --font-size-xl: 3.5rem;           /* Hero */
+    --font-size-lg: 2.5rem;           /* Section headers */
+    --font-size-md: 1.25rem;          /* Body */
+    --font-size-sm: 1rem;             /* Small text */
+    --font-size-xs: 0.875rem;         /* Captions */
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+
+    /* Layout */
+    --narrative-width: 45vw;
+    --narrative-max-width: 600px;
+    --narrative-padding: 3rem;
+
+    /* Animations */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.8s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    :root {
+        --font-size-xl: 2.5rem;
+        --font-size-lg: 2rem;
+        --font-size-md: 1.125rem;
+
+        --narrative-width: 90vw;
+        --narrative-padding: 2rem;
+    }
+}
