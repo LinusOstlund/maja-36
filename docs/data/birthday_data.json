@@ -222,8 +222,42 @@
       }
     },
     {
-      "id": "hints-2",
+      "id": "friend-quotes",
       "step": 6,
+      "type": "quote-bubbles",
+      "content": {
+        "text": "Här är lite citat gällande presenten (obs några är tagna ur sina sammanhang)",
+        "quotes": [
+          {
+            "author": "Huss",
+            "text": "linus. du är besatt av dom konstigaste personerna"
+          },
+          {
+            "author": "Mike",
+            "text": "Ger du ___ ____ i julklapp till din gf? Aldrig hört. Talas om 😂"
+          },
+          {
+            "author": "Mr Gogo",
+            "text": "Tror inte Linus vet vad Maja gillar"
+          },
+          {
+            "author": "Kong",
+            "text": "1000ggr bättre än xbox-kontroll"
+          },
+          {
+            "author": "Nils",
+            "text": "*obekväm tystnad*"
+          },
+          {
+            "author": "Björk",
+            "text": "jävla stockholmare som tror ni är bättre än folk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hints-2",
+      "step": 7,
       "type": "image-grid",
       "content": {
         "text": "Var det för svårt så…",
@@ -246,7 +280,7 @@
     },
     {
       "id": "also",
-      "step": 7,
+      "step": 8,
       "type": "image-grid",
       "content": {
         "text": "men också",
@@ -265,7 +299,7 @@
     },
     {
       "id": "morning",
-      "step": 8,
+      "step": 9,
       "type": "image-single",
       "content": {
         "text": "SOVMORGON",
@@ -277,7 +311,7 @@
     },
     {
       "id": "reveal",
-      "step": 9,
+      "step": 10,
       "type": "image-single",
       "content": {
         "text": "It's gonna be sumthin juicy baby",

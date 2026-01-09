@@ -1,5 +1,5 @@
 /**
- * Visualization Manager - Switch/case for all 10 visualizations
+ * Visualization Manager - Switch/case for all 11 visualizations
  *
  * Manages D3.js visualizations for each scroll step:
  * - Step 0: Hero (emoji floaters)
@@ -8,10 +8,11 @@
  * - Step 3: Line Chart (historical + projection)
  * - Step 4: Image Grid (first hints)
  * - Step 5: Text with Dots (guess)
- * - Step 6: Image Grid (more hints)
- * - Step 7: Image Grid (also)
- * - Step 8: Image Single (morning)
- * - Step 9: Image Single (reveal)
+ * - Step 6: Quote Bubbles (friend quotes)
+ * - Step 7: Image Grid (more hints)
+ * - Step 8: Image Grid (also)
+ * - Step 9: Image Single (morning)
+ * - Step 10: Image Single (reveal)
  */
 
 export class VisualizationManager {
@@ -95,15 +96,18 @@ export class VisualizationManager {
                 this.createTextWithDotsViz(container, slide);
                 break;
             case 6:
-                this.createImageGridViz(container, slide);
+                this.createQuoteBubblesViz(container, slide);
                 break;
             case 7:
                 this.createImageGridViz(container, slide);
                 break;
             case 8:
-                this.createImageSingleViz(container, slide);
+                this.createImageGridViz(container, slide);
                 break;
             case 9:
+                this.createImageSingleViz(container, slide);
+                break;
+            case 10:
                 this.createImageSingleViz(container, slide);
                 break;
         }
@@ -342,6 +346,98 @@ export class VisualizationManager {
             .transition('dot-pulse-4')
             .duration(600)
             .attr('opacity', 0.3);
+    }
+
+    createQuoteBubblesViz(container, slide) {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const { quotes } = slide.content;
+        const isMobile = this.isMobile();
+
+        const svg = container.append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        // Responsive sizing
+        const bubbleWidth = isMobile ? Math.min(280, width - 40) : 400;
+        const spacing = isMobile ? 20 : 30;
+        const startY = isMobile ? 80 : 120;
+
+        quotes.forEach((quote, i) => {
+            const x = (width - bubbleWidth) / 2;
+            const y = startY + i * (isMobile ? 110 : 130);
+
+            // Bubble group
+            const g = svg.append('g')
+                .attr('opacity', 0);
+
+            // Bubble background (chat bubble style)
+            const bubbleHeight = isMobile ? 90 : 100;
+            g.append('rect')
+                .attr('x', x)
+                .attr('y', y)
+                .attr('width', bubbleWidth)
+                .attr('height', bubbleHeight)
+                .attr('rx', 12)
+                .attr('fill', '#f0f0f0')
+                .style('filter', 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))');
+
+            // Author name (bold)
+            g.append('text')
+                .attr('x', x + 15)
+                .attr('y', y + 25)
+                .attr('font-size', isMobile ? 14 : 16)
+                .attr('font-family', 'IBM Plex Mono, monospace')
+                .attr('font-weight', '600')
+                .attr('fill', '#8B4513')
+                .text(quote.author);
+
+            // Quote text (wrapped)
+            const maxWidth = bubbleWidth - 30;
+            const fontSize = isMobile ? 13 : 14;
+            this.wrapText(g, quote.text, x + 15, y + 50, maxWidth, fontSize);
+
+            // Animate in with stagger
+            g.transition()
+                .delay(i * 400)
+                .duration(600)
+                .attr('opacity', 1);
+        });
+    }
+
+    // Helper to wrap text
+    wrapText(group, text, x, y, maxWidth, fontSize) {
+        const words = text.split(' ');
+        let line = '';
+        let lineNumber = 0;
+        const lineHeight = fontSize + 4;
+
+        words.forEach((word) => {
+            const testLine = line + word + ' ';
+            // Approximate width (not perfect but works for monospace)
+            if (testLine.length * (fontSize * 0.6) > maxWidth && line !== '') {
+                group.append('text')
+                    .attr('x', x)
+                    .attr('y', y + lineNumber * lineHeight)
+                    .attr('font-size', fontSize)
+                    .attr('font-family', 'Crimson Text, serif')
+                    .attr('fill', '#333')
+                    .text(line.trim());
+                line = word + ' ';
+                lineNumber++;
+            } else {
+                line = testLine;
+            }
+        });
+
+        // Last line
+        group.append('text')
+            .attr('x', x)
+            .attr('y', y + lineNumber * lineHeight)
+            .attr('font-size', fontSize)
+            .attr('font-family', 'Crimson Text, serif')
+            .attr('fill', '#333')
+            .text(line.trim());
     }
 
     createBudgetKPIsViz(container, slide) {

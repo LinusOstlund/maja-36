@@ -83,6 +83,9 @@ class BirthdayScrollytelling {
                 case 'text-with-dots':
                     this.populateText(content, slide);
                     break;
+                case 'quote-bubbles':
+                    this.populateQuoteBubbles(content, slide);
+                    break;
                 case 'image-single':
                     this.populateImageSingle(content, slide);
                     break;
@@ -119,6 +122,12 @@ class BirthdayScrollytelling {
     populateText(content, slide) {
         content.innerHTML = `
             <p>${slide.content.text}</p>
+        `;
+    }
+
+    populateQuoteBubbles(content, slide) {
+        content.innerHTML = `
+            <p style="font-style: italic; margin-bottom: 1.5rem;">${slide.content.text}</p>
         `;
     }
 

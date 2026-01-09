@@ -57,7 +57,7 @@ slides:
     step: 2
     type: "kpi-cards"
     content:
-      intro: "Linus sparbudget 2025 ca 18000:-, vilket bleknade jämfört mot"
+      intro: "Linus sparbudget 2025 bleknade i jämförelse med"
       highlight: "presentbudgeten"
       kpis:
         - label: "Sparbudget 2025"
@@ -77,7 +77,7 @@ slides:
     step: 3
     type: "line-chart"
     content:
-      intro: "Låt den här trenden hålla i sig, så kommer du få presenter för miljontals kronor 2035"
+      intro: "Låt den här trenden hålla i sig, så kommer du snart få presenter för miljontals kronor"
       chart:
         title: "Presentbudget per år"
         x_label: "År"
@@ -128,7 +128,7 @@ slides:
     step: 4
     type: "image-grid"
     content:
-      text: "Okej, nu får du några hintar"
+      text: "Okej, nu får du några hintar, sen ska du gissa vad presenten är för något"
       layout: "grid-3"
       images:
         - url: "https://www.kjell.com/globalassets/productimages/903104_66285_01_environment_00.jpg?ref=FCD9E4D3E2"
@@ -145,9 +145,29 @@ slides:
     content:
       text: "Gissa !!! 😠"
 
-  # Slide 6: More Hints
-  - id: "hints-2"
+  # Slide 6: Friend Quotes
+  - id: "friend-quotes"
     step: 6
+    type: "quote-bubbles"
+    content:
+      text: "Här är lite citat gällande presenten (obs några är tagna ur sina sammanhang)"
+      quotes:
+        - author: "Huss"
+          text: "linus. du är besatt av dom konstigaste personerna"
+        - author: "Mike"
+          text: "Ger du ___ ____ i julklapp till din gf? Aldrig hört. Talas om 😂"
+        - author: "Mr Gogo"
+          text: "Tror inte Linus vet vad Maja gillar"
+        - author: "Kong"
+          text: "1000ggr bättre än xbox-kontroll"
+        - author: "Nils"
+          text: "*obekväm tystnad*"
+        - author: "Björk"
+          text: "jävla stockholmare som tror ni är bättre än folk"
+
+  # Slide 7: More Hints
+  - id: "hints-2"
+    step: 7
     type: "image-grid"
     content:
       text: "Var det för svårt så…"
@@ -160,12 +180,12 @@ slides:
         - url: "https://cms.dramaten.se/Media/sm2hiwls/i-bla-salongen.jpg"
           alt: "Dramaten"
 
-  # Slide 7: Also hints
+  # Slide 8: Also hints
   - id: "also"
-    step: 7
+    step: 8
     type: "image-grid"
     content:
-      text: "men också"
+      text: "... men också..."
       layout: "grid-2"
       images:
         - url: "https://media-cdn.tripadvisor.com/media/photo-s/02/3c/56/de/hotellet-utifran.jpg"
@@ -173,22 +193,22 @@ slides:
         - url: "https://thumbs.dreamstime.com/b/farmor-och-farfar-tillsammans-haired-mormor-morfar-f%C3%B6r-silver-124287252.jpg"
           alt: "Mormor och morfar"
 
-  # Slide 8: Morning
+  # Slide 9: Morning
   - id: "morning"
-    step: 8
+    step: 9
     type: "image-single"
     content:
-      text: "SOVMORGON"
+      text: "SOVMORGON 😍"
       image:
         url: "https://i.pinimg.com/564x/c5/69/07/c56907b29b0584e298274cc0fd8f85fa.jpg"
         alt: "God bless this mess"
 
-  # Slide 9: Final Reveal
+  # Slide 10: Final Reveal
   - id: "reveal"
-    step: 9
+    step: 10
     type: "image-single"
     content:
-      text: "It's gonna be sumthin juicy baby"
+      text: "🎵It's gonna be sumthin juicy baby🎶"
       image:
         url: "https://m.media-amazon.com/images/I/41Q7J0D7EDL._UF894,1000_QL80_.jpg"
         alt: "Juicy Juice"
