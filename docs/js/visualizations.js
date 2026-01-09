@@ -216,13 +216,16 @@ export class VisualizationManager {
         // Responsive columns: Mobile = 1 column, Desktop = 2 or 3
         const cols = isMobile ? 1 : (layout === 'grid-3' ? 3 : 2);
 
+        // Extended height on mobile for scrolling
+        const svgHeight = isMobile ? height * 1.8 : height;
+
         const svg = container.append('svg')
             .attr('width', width)
-            .attr('height', height);
+            .attr('height', svgHeight);
 
-        // Responsive sizing
-        const imgWidth = isMobile ? Math.min(250, width - 40) : 300;
-        const spacing = isMobile ? 30 : 50;
+        // Responsive sizing - much smaller on mobile with more space
+        const imgWidth = isMobile ? Math.min(200, width - 80) : 300;
+        const spacing = isMobile ? 25 : 50;
         const totalWidth = cols * imgWidth + (cols - 1) * spacing;
         const startX = (width - totalWidth) / 2;
 
@@ -230,7 +233,7 @@ export class VisualizationManager {
             const col = i % cols;
             const row = Math.floor(i / cols);
             const x = startX + col * (imgWidth + spacing);
-            const y = isMobile ? 100 + row * (imgWidth + spacing) : 150 + row * (imgWidth + spacing);
+            const y = isMobile ? 80 + row * (imgWidth + spacing) : 150 + row * (imgWidth + spacing);
 
             const g = svg.append('g')
                 .attr('opacity', 0);
@@ -358,14 +361,14 @@ export class VisualizationManager {
             .attr('width', width)
             .attr('height', height * 2); // Extended height for scrolling
 
-        // Responsive sizing
+        // Responsive sizing - tighter on mobile
         const bubbleWidth = isMobile ? Math.min(300, width - 60) : 450;
         const spacing = isMobile ? 40 : 60;
-        const startY = isMobile ? 100 : 150;
+        const startY = isMobile ? 60 : 150;
 
         quotes.forEach((quote, i) => {
             const x = (width - bubbleWidth) / 2;
-            const y = startY + i * (isMobile ? 140 : 160);
+            const y = startY + i * (isMobile ? 105 : 160); // Much tighter spacing on mobile
 
             // Bubble group
             const g = svg.append('g')
@@ -374,7 +377,7 @@ export class VisualizationManager {
                 .attr('transform', `translate(0, 20)`); // Start slightly lower
 
             // Bubble background (chat bubble style with better shadow)
-            const bubbleHeight = isMobile ? 100 : 110;
+            const bubbleHeight = isMobile ? 85 : 110;
             g.append('rect')
                 .attr('x', x)
                 .attr('y', y)
