@@ -1,5 +1,5 @@
-# Maja's 36th Birthday Present Data
-# Source of truth for scrollytelling content
+# Maja's 36th Birthday Present Data - Finalized Version
+# Source of truth for scrollytelling content with image-based reveal
 
 metadata:
   recipient: "Maja Pelle-Svensson"
@@ -8,8 +8,8 @@ metadata:
   language: "sv"
 
 slides:
-  # Slide 0: Hero / Header
-  - id: "header"
+  # Slide 0: Hero
+  - id: "hero"
     step: 0
     type: "hero"
     content:
@@ -17,102 +17,44 @@ slides:
       subtitle: "36 år gammal"
       emojis: "🎉🎂🎁✨"
 
-  # Slide 1: Wishlist
-  - id: "wishlist"
+  # Slide 1: Wishlist - Scattered Product Images
+  - id: "wishlist-images"
     step: 1
-    type: "list"
+    type: "scattered-images"
     content:
       intro: "Vad ger man den som har allt? Justja, du har kidnappat inköpslistan med nästlade födelsedagslistor"
-      items:
-        - text: "En krok i taket centrerat över matbordet"
-          note: "Till solsystemet :)"
-          checked: false
-          strikethrough: false
-        - text: "Montering av väggfasta skåp i hallen"
-          note: "Tex 4 Ivar-skåp"
-          checked: false
-          strikethrough: false
-        - text: "En bra elektrisk nagelfil, från typ nailster eller ngt"
-          checked: false
-          strikethrough: false
-        - text: "Nya AirPods (eller annat billigare märke, inte för stora)"
-          checked: false
-          strikethrough: false
-        - text: "Julia frändförs bok - det gör bara ont i början"
-          checked: false
-          strikethrough: false
-        - text: "Bok tone shunnesson - tripprapporter"
-          checked: false
-          strikethrough: false
-        - text: "Morgonrock från a world of craft"
-          checked: false
-          strikethrough: false
-        - text: "Trådlösa on ear lurar till träningen"
-          note: "Inte över ear, gillar inte"
-          checked: false
-          strikethrough: false
-        - text: "Sumting juicy"
-          checked: false
-          strikethrough: true
+      images:
+        - id: "ceiling_hook"
+          url: "https://placehold.co/200x200/8B4513/FFF?text=Takkrok"
+          alt: "Takkrok för solsystemet"
+        - id: "ivar_cabinet"
+          url: "https://placehold.co/200x200/D4A574/FFF?text=Ivar"
+          alt: "Ivar väggskåp"
+        - id: "nail_file"
+          url: "https://placehold.co/200x200/E8B4B8/FFF?text=Nagelfil"
+          alt: "Elektrisk nagelfil"
+        - id: "airpods"
+          url: "https://placehold.co/200x200/8B4513/FFF?text=AirPods"
+          alt: "Trådlösa hörlurar"
+        - id: "julia_book"
+          url: "https://placehold.co/200x200/D4A574/FFF?text=Julia"
+          alt: "Julia Frändförs bok"
+        - id: "tone_book"
+          url: "https://placehold.co/200x200/E8B4B8/FFF?text=Tone"
+          alt: "Tone Schunnesson tripprapporter"
+        - id: "bathrobe"
+          url: "https://placehold.co/200x200/8B4513/FFF?text=Morgonrock"
+          alt: "Morgonrock"
+        - id: "headphones"
+          url: "https://placehold.co/200x200/D4A574/FFF?text=Lurar"
+          alt: "Träningshörlurar"
+        - id: "sumthin_juicy"
+          url: "https://m.media-amazon.com/images/I/41Q7J0D7EDL._UF894,1000_QL80_.jpg"
+          alt: "Sumthin Juicy"
 
-  # Slide 2: Ideas Cloud
-  - id: "ideas"
-    step: 2
-    type: "icon-cloud"
-    content:
-      text: "Well, du har en pojkvän med stor fantasi och påstådd (men bestridd) autism. Idéer finnes."
-      icon_count: 100
-      icons:
-        - "💡"  # Ideas
-        - "🧠"  # Brain/thinking
-        - "❤️"  # Love
-        - "💕"  # Hearts
-        - "🎨"  # Creativity
-        - "🎭"  # Drama/fun
-        - "🌟"  # Special
-        - "✨"  # Sparkles
-        - "🎪"  # Circus/fun
-        - "🎸"  # Music
-        - "🎵"  # Musical note
-        - "🎶"  # Musical notes
-        - "📚"  # Books
-        - "📖"  # Open book
-        - "🎬"  # Movies
-        - "📺"  # TV
-        - "🍕"  # Food
-        - "🌮"  # Tacos
-        - "🍰"  # Cake
-        - "🍪"  # Cookie
-        - "☕"  # Coffee
-        - "🍷"  # Wine
-        - "🍾"  # Champagne
-        - "🌺"  # Flowers
-        - "🌸"  # Cherry blossom
-        - "🌹"  # Rose
-        - "🏖️"  # Beach/vacation
-        - "✈️"  # Travel
-        - "🏔️"  # Mountains
-        - "🚴"  # Cycling
-        - "🧘"  # Yoga
-        - "💅"  # Nails
-        - "👗"  # Dress
-        - "👠"  # Heels
-        - "💄"  # Lipstick
-        - "🎮"  # Games
-        - "🏡"  # Home
-        - "🛋️"  # Couch
-        - "🕯️"  # Candle
-
-  # Slide 3: Transition
-  - id: "transition"
-    step: 3
-    type: "text"
-    content:
-      text: "Du kan vara lugn, en present är inhandlad. Men först lite data"
-
-  # Slide 4: Budget KPIs
+  # Slide 2: Budget KPIs
   - id: "budget-kpis"
-    step: 4
+    step: 2
     type: "kpi-cards"
     content:
       intro: "Linus sparbudget 2025 ca 18000:-, vilket bleknade jämfört mot"
@@ -130,9 +72,9 @@ slides:
           emphasis: true
           prefix: ">"
 
-  # Slide 5: Future Projection Chart
+  # Slide 3: Future Projection Chart
   - id: "future-projection"
-    step: 5
+    step: 3
     type: "line-chart"
     content:
       intro: "Låt den här trenden hålla i sig, så kommer du få presenter för miljontals kronor 2035"
@@ -180,3 +122,73 @@ slides:
             value: 1500000
           - year: 2035
             value: 1850000
+
+  # Slide 4: First Hints
+  - id: "hints-1"
+    step: 4
+    type: "image-grid"
+    content:
+      text: "Okej, nu får du några hintar"
+      layout: "grid-3"
+      images:
+        - url: "https://www.kjell.com/globalassets/productimages/903104_66285_01_environment_00.jpg?ref=FCD9E4D3E2"
+          alt: "Ringklocka"
+        - url: "https://nfimageservice.azureedge.net/image/fe9b0b49-5b77-4ad6-a33f-159c9e611f4b?width=720&height=480"
+          alt: "Brev"
+        - url: "https://cdn.starwebserver.se/shops/hasselgrens/files/trolley-trolly-palette-3.jpg"
+          alt: "Vagn"
+
+  # Slide 5: Guess
+  - id: "guess"
+    step: 5
+    type: "text-with-dots"
+    content:
+      text: "Gissa !!! 😠"
+
+  # Slide 6: More Hints
+  - id: "hints-2"
+    step: 6
+    type: "image-grid"
+    content:
+      text: "Var det för svårt så…"
+      layout: "grid-3"
+      images:
+        - url: "https://image.femina.se/helena-bergstrom-anglagard?imageId=9990910&width=1320&height=2025&format=webp&compression=90&cropw=100&croph=100&x=0&y=0"
+          alt: "Helena Bergström"
+        - url: "https://cms.dramaten.se/Media/dpmdrt2y/tro-strapportpress_schulman_artikel.jpg?width=1700&height=956&mode=crop"
+          alt: "Alex Schulman"
+        - url: "https://cms.dramaten.se/Media/sm2hiwls/i-bla-salongen.jpg"
+          alt: "Dramaten"
+
+  # Slide 7: Also hints
+  - id: "also"
+    step: 7
+    type: "image-grid"
+    content:
+      text: "men också"
+      layout: "grid-2"
+      images:
+        - url: "https://media-cdn.tripadvisor.com/media/photo-s/02/3c/56/de/hotellet-utifran.jpg"
+          alt: "Hotell"
+        - url: "https://thumbs.dreamstime.com/b/farmor-och-farfar-tillsammans-haired-mormor-morfar-f%C3%B6r-silver-124287252.jpg"
+          alt: "Mormor och morfar"
+
+  # Slide 8: Morning
+  - id: "morning"
+    step: 8
+    type: "image-single"
+    content:
+      text: "SOVMORGON"
+      image:
+        url: "https://i.pinimg.com/564x/c5/69/07/c56907b29b0584e298274cc0fd8f85fa.jpg"
+        alt: "God bless this mess"
+
+  # Slide 9: Final Reveal
+  - id: "reveal"
+    step: 9
+    type: "image-single"
+    content:
+      text: "It's gonna be sumthin juicy baby"
+      image:
+        url: "https://m.media-amazon.com/images/I/41Q7J0D7EDL._UF894,1000_QL80_.jpg"
+        alt: "Juicy Juice"

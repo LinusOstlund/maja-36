@@ -68,20 +68,23 @@ class BirthdayScrollytelling {
                 case 'hero':
                     this.populateHero(content, slide);
                     break;
-                case 'list':
-                    this.populateWishlist(content, slide);
-                    break;
-                case 'icon-cloud':
-                    this.populateIconCloud(content, slide);
-                    break;
-                case 'text':
-                    this.populateText(content, slide);
+                case 'scattered-images':
+                    this.populateScatteredImages(content, slide);
                     break;
                 case 'kpi-cards':
                     this.populateKPIs(content, slide);
                     break;
                 case 'line-chart':
                     this.populateChart(content, slide);
+                    break;
+                case 'image-grid':
+                    this.populateImageGrid(content, slide);
+                    break;
+                case 'text-with-dots':
+                    this.populateText(content, slide);
+                    break;
+                case 'image-single':
+                    this.populateImageSingle(content, slide);
                     break;
             }
         });
@@ -95,31 +98,21 @@ class BirthdayScrollytelling {
         `;
     }
 
-    populateWishlist(content, slide) {
-        const { intro, items } = slide.content;
-
-        const itemsHTML = items.map(item => {
-            const textClass = item.strikethrough ? 'wishlist-item-text strikethrough' : 'wishlist-item-text';
-            const noteHTML = item.note ? `<span class="wishlist-item-note">${item.note}</span>` : '';
-            return `
-                <li class="wishlist-item">
-                    <span class="${textClass}">${item.text}</span>
-                    ${noteHTML}
-                </li>
-            `;
-        }).join('');
-
+    populateScatteredImages(content, slide) {
         content.innerHTML = `
-            <p class="wishlist-intro">${intro}</p>
-            <ul class="wishlist-items">
-                ${itemsHTML}
-            </ul>
+            <p class="wishlist-intro">${slide.content.intro}</p>
         `;
     }
 
-    populateIconCloud(content, slide) {
+    populateImageGrid(content, slide) {
         content.innerHTML = `
             <p>${slide.content.text}</p>
+        `;
+    }
+
+    populateImageSingle(content, slide) {
+        content.innerHTML = `
+            <p style="font-size: 1.8rem; font-weight: 600;">${slide.content.text}</p>
         `;
     }
 

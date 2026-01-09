@@ -1,22 +1,23 @@
 /**
- * Visualization Manager - Switch/case for all 6 visualizations
+ * Visualization Manager - Switch/case for all 10 visualizations
  *
  * Manages D3.js visualizations for each scroll step:
- * - Step 0: Hero (emoji floaters + confetti)
- * - Step 1: Wishlist (animated checklist)
- * - Step 2: Icon Cloud (force simulation)
- * - Step 3: Transition (loading spinner)
- * - Step 4: Budget KPIs (counter animation)
- * - Step 5: Line Chart (historical + projection)
+ * - Step 0: Hero (emoji floaters)
+ * - Step 1: Scattered Images (wishlist)
+ * - Step 2: Budget KPIs (counter animation)
+ * - Step 3: Line Chart (historical + projection)
+ * - Step 4: Image Grid (first hints)
+ * - Step 5: Text with Dots (guess)
+ * - Step 6: Image Grid (more hints)
+ * - Step 7: Image Grid (also)
+ * - Step 8: Image Single (morning)
+ * - Step 9: Image Single (reveal)
  */
-
-import { IconCloud } from './icon-cloud.js';
 
 export class VisualizationManager {
     constructor(data) {
         this.data = data;
         this.currentStep = -1;
-        this.iconCloud = null;
         this.isUpdating = false;
         this.activeAnimations = []; // Track active timeouts/intervals
     }
@@ -44,11 +45,6 @@ export class VisualizationManager {
 
         // Cancel any active animations (timeouts, intervals) from previous step
         this.clearActiveAnimations();
-
-        // Stop icon cloud if exists
-        if (this.iconCloud) {
-            this.iconCloud.stop();
-        }
 
         this.currentStep = step;
 
@@ -80,19 +76,31 @@ export class VisualizationManager {
                 this.createHeroViz(container, slide);
                 break;
             case 1:
-                this.createWishlistViz(container, slide);
+                this.createScatteredImagesViz(container, slide);
                 break;
             case 2:
-                this.createIconCloudViz(container, slide);
-                break;
-            case 3:
-                this.createTransitionViz(container, slide);
-                break;
-            case 4:
                 this.createBudgetKPIsViz(container, slide);
                 break;
-            case 5:
+            case 3:
                 this.createProjectionChartViz(container, slide);
+                break;
+            case 4:
+                this.createImageGridViz(container, slide);
+                break;
+            case 5:
+                this.createTextWithDotsViz(container, slide);
+                break;
+            case 6:
+                this.createImageGridViz(container, slide);
+                break;
+            case 7:
+                this.createImageGridViz(container, slide);
+                break;
+            case 8:
+                this.createImageSingleViz(container, slide);
+                break;
+            case 9:
+                this.createImageSingleViz(container, slide);
                 break;
         }
 
@@ -141,54 +149,144 @@ export class VisualizationManager {
             .attr('x', d => d.x + (Math.random() - 0.5) * 50);
     }
 
-    createWishlistViz(container, slide) {
-        // Simple background pattern for wishlist
+    createScatteredImagesViz(container, slide) {
         const width = window.innerWidth;
         const height = window.innerHeight;
+        const { images } = slide.content;
 
         const svg = container.append('svg')
             .attr('width', width)
             .attr('height', height);
 
-        // Subtle checkmark pattern
-        const checkmarks = Array(15).fill(null).map((_, i) => ({
-            x: 100 + (i % 5) * 200,
-            y: 100 + Math.floor(i / 5) * 250,
-            delay: i * 100
-        }));
+        images.forEach((img, i) => {
+            const x = 150 + Math.random() * (width - 500);
+            const y = 100 + Math.random() * (height - 350);
+            const rotation = -25 + Math.random() * 50;
+            const scale = 0.8 + Math.random() * 0.4;
 
-        svg.selectAll('.checkmark')
-            .data(checkmarks)
-            .enter()
-            .append('text')
-            .attr('class', 'checkmark')
-            .attr('x', d => d.x)
-            .attr('y', d => d.y)
-            .attr('font-size', 60)
-            .attr('fill', '#E8B4B8')
-            .attr('opacity', 0)
-            .text('✓')
-            .transition()
-            .delay(d => d.delay)
+            const g = svg.append('g')
+                .attr('transform', `translate(${x}, ${y}) rotate(${rotation}) scale(${scale})`)
+                .attr('opacity', 0);
+
+            // White background card
+            g.append('rect')
+                .attr('width', 200)
+                .attr('height', 200)
+                .attr('fill', 'white')
+                .attr('rx', 8)
+                .style('filter', 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))');
+
+            // Image
+            g.append('image')
+                .attr('href', img.url)
+                .attr('width', 200)
+                .attr('height', 200)
+                .attr('preserveAspectRatio', 'xMidYMid slice')
+                .attr('clip-path', 'inset(0 round 8px)');
+
+            // Animate in
+            g.transition()
+                .delay(i * 200)
+                .duration(800)
+                .attr('opacity', 1);
+        });
+    }
+
+    createImageGridViz(container, slide) {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const { images, layout } = slide.content;
+        const cols = layout === 'grid-3' ? 3 : 2;
+
+        const svg = container.append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const imgWidth = 300;
+        const spacing = 50;
+        const totalWidth = cols * imgWidth + (cols - 1) * spacing;
+        const startX = (width - totalWidth) / 2;
+
+        images.forEach((img, i) => {
+            const col = i % cols;
+            const row = Math.floor(i / cols);
+            const x = startX + col * (imgWidth + spacing);
+            const y = 150 + row * (imgWidth + spacing);
+
+            const g = svg.append('g')
+                .attr('opacity', 0);
+
+            // White background card
+            g.append('rect')
+                .attr('x', x)
+                .attr('y', y)
+                .attr('width', imgWidth)
+                .attr('height', imgWidth)
+                .attr('fill', 'white')
+                .attr('rx', 8)
+                .style('filter', 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))');
+
+            // Image
+            g.append('image')
+                .attr('href', img.url)
+                .attr('x', x)
+                .attr('y', y)
+                .attr('width', imgWidth)
+                .attr('height', imgWidth)
+                .attr('preserveAspectRatio', 'xMidYMid slice')
+                .attr('clip-path', `inset(0 round 8px)`);
+
+            // Animate in
+            g.transition()
+                .delay(i * 300)
+                .duration(600)
+                .attr('opacity', 1);
+        });
+    }
+
+    createImageSingleViz(container, slide) {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const { image } = slide.content;
+
+        const svg = container.append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const imgSize = 400;
+        const x = (width - imgSize) / 2;
+        const y = (height - imgSize) / 2;
+
+        const g = svg.append('g')
+            .attr('opacity', 0);
+
+        // White background card
+        g.append('rect')
+            .attr('x', x)
+            .attr('y', y)
+            .attr('width', imgSize)
+            .attr('height', imgSize)
+            .attr('fill', 'white')
+            .attr('rx', 8)
+            .style('filter', 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))');
+
+        // Image
+        g.append('image')
+            .attr('href', image.url)
+            .attr('x', x)
+            .attr('y', y)
+            .attr('width', imgSize)
+            .attr('height', imgSize)
+            .attr('preserveAspectRatio', 'xMidYMid slice')
+            .attr('clip-path', `inset(0 round 8px)`);
+
+        // Animate in
+        g.transition()
             .duration(800)
-            .attr('opacity', 0.15);
+            .attr('opacity', 1);
     }
 
-    createIconCloudViz(container, slide) {
-        // Use icon-cloud.js force simulation component
-        this.iconCloud = new IconCloud(
-            container.node(),
-            slide.content.icons,
-            {
-                width: window.innerWidth,
-                height: window.innerHeight,
-                iconSize: 40
-            }
-        );
-        this.iconCloud.render();
-    }
-
-    createTransitionViz(container, slide) {
+    createTextWithDotsViz(container, slide) {
         const width = window.innerWidth;
         const height = window.innerHeight;
 
